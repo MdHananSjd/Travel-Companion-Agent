@@ -4,7 +4,7 @@ from agents.travel_agent import plan_trip
 st.set_page_config(page_title="AI Travel Assistant")
 st.title("AI Travel Assistant")
 
-st.write("Describe your travel preferences and I’ll suggest destinations, weather, and events.")
+st.write("Describe your travel preferences and I'll suggest destinations, weather, and events.")
 
 user_input = st.text_area("Your travel query:", placeholder="E.g., I want a beach vacation in December")
 
