@@ -1,14 +1,18 @@
 import streamlit as st
-from agents.travel_agent import run_agent
+from agents.travel_agent import plan_trip
 
 st.set_page_config(page_title="AI Travel Assistant")
-
 st.title("AI Travel Assistant")
 
-query = st.text_input("Ask me about travel plans:")
+st.write("Describe your travel preferences and I’ll suggest destinations, weather, and events.")
 
-if st.button("Submit") and query:
-    with st.spinner("Thinking..."):
-        response = run_agent(query)
-    st.write("### Recommendation")
-    st.write(response)
+user_input = st.text_area("Your travel query:", placeholder="E.g., I want a beach vacation in December")
+
+if st.button("Plan my trip") and user_input:
+    with st.spinner("Planning your trip..."):
+        try:
+            result = plan_trip(user_input)
+        except Exception as e:
+            result = f"Error: {e}"
+    st.write("### Recommendations")
+    st.write(result)
